@@ -1,10 +1,14 @@
+import prisma from '@/lib/prisma';
 import Link from 'next/link';
-import { getLatestPosts } from '@/lib/blog';
 import { ArrowRight } from 'lucide-react';
 import { PageRoute } from '@/lib/types';
 
-export default function LatestPosts() {
-    const posts = getLatestPosts(3);
+export default async function LatestPosts() {
+    const posts = await prisma.post.findMany({
+        where: { published: true },
+        orderBy: { createdAt: 'desc' },
+        take: 3,
+    });
 
     if (posts.length === 0) return null;
 
@@ -20,7 +24,7 @@ export default function LatestPosts() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {posts.map((post) => (
                     <Link
-                        key={post.slug}
+                        key={post.id}
                         href={`/bitacora/${post.slug}`}
                         className="group"
                     >
@@ -35,7 +39,7 @@ export default function LatestPosts() {
                                 {post.excerpt}
                             </p>
                             <div className="mt-4 pt-4 border-t border-white/10">
-                                <span className="font-mono text-xs text-white/40">{post.date}</span>
+                                <span className="font-mono text-xs text-white/40">{post.createdAt.toLocaleDateString()}</span>
                             </div>
                         </article>
                     </Link>

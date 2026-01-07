@@ -1,4 +1,4 @@
-import { getPostBySlug, getAllPostSlugs } from '@/lib/blog';
+import prisma from '@/lib/prisma';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,14 +9,21 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-    const slugs = getAllPostSlugs();
-    return slugs.map((slug) => ({ slug }));
+    const posts = await prisma.post.findMany({
+        where: { published: true },
+        select: { slug: true },
+    });
+    return posts.map((post) => ({ slug: post.slug }));
 }
 
-export default async function PostPage({ params }: PageProps) {
-    const post = await getPostBySlug(params.slug);
+export const dynamic = 'force-dynamic';
 
-    if (!post) {
+export default async function PostPage({ params }: PageProps) {
+    const post = await prisma.post.findUnique({
+        where: { slug: params.slug },
+    });
+
+    if (!post || !post.published) {
         notFound();
     }
 
@@ -55,7 +62,7 @@ export default async function PostPage({ params }: PageProps) {
                             {post.type}
                         </span>
                         <span className="font-mono text-xs text-white/40">
-                            {post.date}
+                            {post.createdAt.toLocaleDateString()}
                         </span>
                     </div>
                     <h1 className="font-sans text-4xl md:text-6xl font-black uppercase leading-tight mb-6">
