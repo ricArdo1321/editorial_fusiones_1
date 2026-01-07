@@ -1,0 +1,51 @@
+{
+  "pages": {
+    "/_not-found": [
+      "static/chunks/webpack-33b4ae685e2534fa.js",
+      "static/chunks/fd9d1056-ec06e3651eb582df.js",
+      "static/chunks/69-ddcded77b618511a.js",
+      "static/chunks/main-app-6b0abfe1584bd669.js",
+      "static/chunks/app/_not-found-9d36fadb54502b5c.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-33b4ae685e2534fa.js",
+      "static/chunks/fd9d1056-ec06e3651eb582df.js",
+      "static/chunks/69-ddcded77b618511a.js",
+      "static/chunks/main-app-6b0abfe1584bd669.js",
+      "static/chunks/398-6b0c44ccbd100e25.js",
+      "static/css/231d99874ef069e7.css",
+      "static/chunks/app/layout-36e73f83e4af3847.js"
+    ],
+    "/bitacora/page": [
+      "static/chunks/webpack-33b4ae685e2534fa.js",
+      "static/chunks/fd9d1056-ec06e3651eb582df.js",
+      "static/chunks/69-ddcded77b618511a.js",
+      "static/chunks/main-app-6b0abfe1584bd669.js",
+      "static/chunks/703-a14d31f69647107d.js",
+      "static/chunks/app/bitacora/page-7c0649c8e2cbe951.js"
+    ],
+    "/curaduria/page": [
+      "static/chunks/webpack-33b4ae685e2534fa.js",
+      "static/chunks/fd9d1056-ec06e3651eb582df.js",
+      "static/chunks/69-ddcded77b618511a.js",
+      "static/chunks/main-app-6b0abfe1584bd669.js",
+      "static/chunks/703-a14d31f69647107d.js",
+      "static/chunks/app/curaduria/page-082f7351efe3ebba.js"
+    ],
+    "/editorial/page": [
+      "static/chunks/webpack-33b4ae685e2534fa.js",
+      "static/chunks/fd9d1056-ec06e3651eb582df.js",
+      "static/chunks/69-ddcded77b618511a.js",
+      "static/chunks/main-app-6b0abfe1584bd669.js",
+      "static/chunks/app/editorial/page-11dbc3178664a2ac.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-33b4ae685e2534fa.js",
+      "static/chunks/fd9d1056-ec06e3651eb582df.js",
+      "static/chunks/69-ddcded77b618511a.js",
+      "static/chunks/main-app-6b0abfe1584bd669.js",
+      "static/chunks/398-6b0c44ccbd100e25.js",
+      "static/chunks/app/page-3a1edb0272b792ab.js"
+    ]
+  }
+}

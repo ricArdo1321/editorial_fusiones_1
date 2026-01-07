@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #111111;
+  --foreground: #F5F5F5;
+  --brand: #E31E24;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+/* Global Selection Color */
+::selection {
+  background: var(--brand);
+  color: #FFFFFF;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand);
+}
+
+@layer utilities {
+  .bg-halftone-pattern {
+    background-image: radial-gradient(circle, #E31E24 2px, transparent 2.5px);
+  }
+}
+
+@layer components {
+
+  /* Buttons */
+  .btn-base {
+    @apply px-8 py-4 font-sans font-bold uppercase tracking-widest text-xs transition-colors;
+  }
+
+  .btn-primary {
+    @apply btn-base bg-brand text-white hover:bg-red-700;
+  }
+
+  .btn-secondary {
+    @apply btn-base border border-white text-white hover:bg-white hover:text-black;
+  }
+
+  .btn-outline {
+    @apply px-6 py-2 border border-foreground rounded-full text-xs font-bold uppercase tracking-wider hover:bg-brand hover:border-brand transition-all;
+  }
+
+  /* Typography */
+  .heading-xl {
+    @apply font-sans text-6xl md:text-8xl font-black tracking-tighter leading-none uppercase;
+  }
+
+  .heading-lg {
+    @apply font-sans text-4xl md:text-6xl font-black uppercase leading-tight;
+  }
+
+  .heading-md {
+    @apply font-sans text-4xl font-black tracking-tighter uppercase;
+  }
+
+  .heading-sm {
+    @apply font-sans text-xl md:text-4xl font-bold uppercase tracking-tight;
+  }
+
+  .label-uppercase {
+    @apply font-sans text-xs font-bold tracking-widest uppercase;
+  }
+
+  .meta-text {
+    @apply font-mono text-[10px] tracking-wider uppercase;
+  }
+
+  /* Cards */
+  .card-hover {
+    @apply group cursor-pointer transition-all duration-300 hover:bg-white/5;
+  }
+
+  .card-border {
+    @apply border border-white/10;
+  }
+
+  /* Images */
+  .img-grayscale-hover {
+    @apply grayscale group-hover:grayscale-0 transition-all duration-500;
+  }
+
+  .img-scale-hover {
+    @apply transform group-hover:scale-105 transition-all duration-500;
+  }
+}
