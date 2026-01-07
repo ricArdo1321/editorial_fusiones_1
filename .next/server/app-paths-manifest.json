@@ -1,8 +1,21 @@
 {
   "/_not-found": "app/_not-found.js",
+  "/api/admin/auth/route": "app/api/admin/auth/route.js",
+  "/api/admin/books/[id]/route": "app/api/admin/books/[id]/route.js",
+  "/api/admin/books/route": "app/api/admin/books/route.js",
+  "/api/admin/posts/[id]/route": "app/api/admin/posts/[id]/route.js",
+  "/api/admin/posts/route": "app/api/admin/posts/route.js",
   "/curaduria/page": "app/curaduria/page.js",
   "/editorial/page": "app/editorial/page.js",
   "/page": "app/page.js",
   "/bitacora/[slug]/page": "app/bitacora/[slug]/page.js",
+  "/admin/books/[id]/page": "app/admin/books/[id]/page.js",
+  "/admin/books/page": "app/admin/books/page.js",
+  "/admin/login/page": "app/admin/login/page.js",
+  "/admin/books/new/page": "app/admin/books/new/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/admin/posts/[id]/page": "app/admin/posts/[id]/page.js",
+  "/admin/posts/new/page": "app/admin/posts/new/page.js",
+  "/admin/posts/page": "app/admin/posts/page.js",
   "/bitacora/page": "app/bitacora/page.js"
 }
