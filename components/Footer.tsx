@@ -22,8 +22,11 @@ export default function Footer() {
                     </button>
                 </div>
             </div>
-            <div className="mt-16 text-center md:text-left text-[10px] font-mono text-white/20 uppercase">
-                © {new Date().getFullYear()} Editorial Fusiones. Todos los derechos reservados.
+            <div className="mt-16 flex justify-between items-center text-[10px] font-mono text-white/20 uppercase">
+                <span>© {new Date().getFullYear()} Editorial Fusiones. Todos los derechos reservados.</span>
+                <Link href="/admin" className="hover:text-brand transition-colors">
+                    Admin
+                </Link>
             </div>
         </footer>
     );
