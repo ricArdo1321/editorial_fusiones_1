@@ -1,7 +1,7 @@
 {
   "/_not-found": "app/_not-found.js",
-  "/bitacora/page": "app/bitacora/page.js",
-  "/curaduria/page": "app/curaduria/page.js",
   "/editorial/page": "app/editorial/page.js",
+  "/curaduria/page": "app/curaduria/page.js",
+  "/bitacora/page": "app/bitacora/page.js",
   "/page": "app/page.js"
 }
