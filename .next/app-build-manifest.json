@@ -1,51 +1,61 @@
 {
   "pages": {
     "/_not-found": [
-      "static/chunks/webpack-d3917974296c015b.js",
+      "static/chunks/webpack-2dffcf12bd026b07.js",
       "static/chunks/fd9d1056-ec06e3651eb582df.js",
       "static/chunks/69-ddcded77b618511a.js",
       "static/chunks/main-app-6b0abfe1584bd669.js",
       "static/chunks/app/_not-found-9d36fadb54502b5c.js"
     ],
     "/layout": [
-      "static/chunks/webpack-d3917974296c015b.js",
+      "static/chunks/webpack-2dffcf12bd026b07.js",
       "static/chunks/fd9d1056-ec06e3651eb582df.js",
       "static/chunks/69-ddcded77b618511a.js",
       "static/chunks/main-app-6b0abfe1584bd669.js",
-      "static/chunks/398-6b0c44ccbd100e25.js",
-      "static/css/545c5950bd41322f.css",
-      "static/chunks/app/layout-9aa67303c444be5b.js"
+      "static/chunks/250-0db2df3df0470a2d.js",
+      "static/css/cd6d707143062455.css",
+      "static/chunks/app/layout-15508655b12586b0.js"
+    ],
+    "/bitacora/page": [
+      "static/chunks/webpack-2dffcf12bd026b07.js",
+      "static/chunks/fd9d1056-ec06e3651eb582df.js",
+      "static/chunks/69-ddcded77b618511a.js",
+      "static/chunks/main-app-6b0abfe1584bd669.js",
+      "static/chunks/250-0db2df3df0470a2d.js",
+      "static/chunks/749-09763fb49d2276ce.js",
+      "static/chunks/app/bitacora/page-1ff9ea56bcfe2b08.js"
+    ],
+    "/curaduria/page": [
+      "static/chunks/webpack-2dffcf12bd026b07.js",
+      "static/chunks/fd9d1056-ec06e3651eb582df.js",
+      "static/chunks/69-ddcded77b618511a.js",
+      "static/chunks/main-app-6b0abfe1584bd669.js",
+      "static/chunks/749-09763fb49d2276ce.js",
+      "static/chunks/app/curaduria/page-4ee486a751cb0f2b.js"
     ],
     "/editorial/page": [
-      "static/chunks/webpack-d3917974296c015b.js",
+      "static/chunks/webpack-2dffcf12bd026b07.js",
       "static/chunks/fd9d1056-ec06e3651eb582df.js",
       "static/chunks/69-ddcded77b618511a.js",
       "static/chunks/main-app-6b0abfe1584bd669.js",
       "static/chunks/app/editorial/page-11dbc3178664a2ac.js"
     ],
-    "/curaduria/page": [
-      "static/chunks/webpack-d3917974296c015b.js",
-      "static/chunks/fd9d1056-ec06e3651eb582df.js",
-      "static/chunks/69-ddcded77b618511a.js",
-      "static/chunks/main-app-6b0abfe1584bd669.js",
-      "static/chunks/703-a14d31f69647107d.js",
-      "static/chunks/app/curaduria/page-082f7351efe3ebba.js"
-    ],
-    "/bitacora/page": [
-      "static/chunks/webpack-d3917974296c015b.js",
-      "static/chunks/fd9d1056-ec06e3651eb582df.js",
-      "static/chunks/69-ddcded77b618511a.js",
-      "static/chunks/main-app-6b0abfe1584bd669.js",
-      "static/chunks/703-a14d31f69647107d.js",
-      "static/chunks/app/bitacora/page-7c0649c8e2cbe951.js"
-    ],
     "/page": [
-      "static/chunks/webpack-d3917974296c015b.js",
+      "static/chunks/webpack-2dffcf12bd026b07.js",
       "static/chunks/fd9d1056-ec06e3651eb582df.js",
       "static/chunks/69-ddcded77b618511a.js",
       "static/chunks/main-app-6b0abfe1584bd669.js",
-      "static/chunks/398-6b0c44ccbd100e25.js",
-      "static/chunks/app/page-3a1edb0272b792ab.js"
+      "static/chunks/250-0db2df3df0470a2d.js",
+      "static/chunks/app/page-9ba715f685834677.js"
+    ],
+    "/bitacora/[slug]/page": [
+      "static/chunks/webpack-2dffcf12bd026b07.js",
+      "static/chunks/fd9d1056-ec06e3651eb582df.js",
+      "static/chunks/69-ddcded77b618511a.js",
+      "static/chunks/main-app-6b0abfe1584bd669.js",
+      "static/chunks/250-0db2df3df0470a2d.js",
+      "static/chunks/749-09763fb49d2276ce.js",
+      "static/chunks/app/bitacora/[slug]/page-dcaeac9e8dd47f90.js"
     ]
   }
 }
