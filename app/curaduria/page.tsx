@@ -1,28 +1,45 @@
-import prisma from '@/lib/prisma';
-import CuraduriaClient from './CuraduriaClient';
-import { Book } from '@/lib/types';
+'use client';
 
-export const dynamic = 'force-dynamic';
+import { useState } from 'react';
+import { ALL_CATEGORIES, BOOK_CATEGORIES } from '@/lib/constants';
+import BookCard from '@/components/ui/BookCard';
+import { BOOKS_MOCK } from '@/lib/data/books';
 
-export default async function Curaduria() {
-    const booksFromDb = await prisma.book.findMany({
-        orderBy: { score: 'desc' },
-    });
+export default function Curaduria() {
+    const [activeCategory, setActiveCategory] = useState('TODO');
 
-    // Transform to match Book interface
-    const books: Book[] = booksFromDb.map(book => ({
-        id: book.id,
-        title: book.title,
-        author: book.author,
-        category: book.category as Book['category'],
-        isbn: book.isbn,
-        score: book.score,
-        coverUrl: book.coverUrl || undefined,
-    }));
+    const filteredBooks = activeCategory === 'TODO'
+        ? BOOKS_MOCK
+        : BOOKS_MOCK.filter(b => b.category === activeCategory);
 
     return (
         <div className="min-h-screen pt-24 pb-12 px-6">
-            <CuraduriaClient books={books} />
+            {/* Sticky Filters */}
+            <div className="sticky top-20 z-20 bg-background/95 backdrop-blur-sm mb-12 py-4 border-b border-white/10">
+                <div className="flex gap-8 overflow-x-auto pb-2 scrollbar-hide">
+                    {ALL_CATEGORIES.map((cat) => (
+                        <button
+                            key={cat}
+                            onClick={() => setActiveCategory(cat)}
+                            className="relative group flex-shrink-0"
+                        >
+                            <span className={`font-sans text-sm font-bold tracking-widest uppercase transition-colors ${activeCategory === cat ? 'text-brand' : 'text-white/60 hover:text-white'
+                                }`}>
+                                {cat}
+                            </span>
+                            <span className={`absolute -bottom-2 left-0 h-[2px] bg-brand transition-all duration-300 ${activeCategory === cat ? 'w-full' : 'w-0'
+                                }`} />
+                        </button>
+                    ))}
+                </div>
+            </div>
+
+            {/* Dense Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-12">
+                {filteredBooks.map((book) => (
+                    <BookCard key={book.id} book={book} />
+                ))}
+            </div>
         </div>
     );
 }

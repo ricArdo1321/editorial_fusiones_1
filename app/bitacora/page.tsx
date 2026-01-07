@@ -1,14 +1,11 @@
-import prisma from '@/lib/prisma';
+import { getPosts } from '@/lib/wordpress';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 60;
 
 export default async function Bitacora() {
-    const posts = await prisma.post.findMany({
-        where: { published: true },
-        orderBy: { createdAt: 'desc' },
-    });
+    const posts = await getPosts();
 
     const currentDate = new Date().toLocaleDateString('es-ES', {
         weekday: 'long',
@@ -32,8 +29,9 @@ export default async function Bitacora() {
 
             {/* Posts Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-min">
-                {posts.map((post) => {
-                    if (post.type === 'FEATURED') {
+                {posts.map((post, index) => {
+                    // First post is featured
+                    if (index === 0) {
                         return (
                             <Link href={`/bitacora/${post.slug}`} key={post.id} className="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 border-b border-white/10 pb-12 group cursor-pointer">
                                 <div className="relative overflow-hidden bg-gray-900 aspect-video md:aspect-auto md:min-h-[400px]">
@@ -48,32 +46,13 @@ export default async function Bitacora() {
                                     )}
                                 </div>
                                 <div className="flex flex-col justify-center">
-                                    <span className="text-brand font-mono text-xs mb-2">FEATURED — {post.createdAt.toLocaleDateString()}</span>
+                                    <span className="text-brand font-mono text-xs mb-2">DESTACADO — {post.date}</span>
                                     <h2 className="font-sans text-4xl md:text-6xl font-black uppercase leading-tight mb-4 group-hover:text-brand transition-colors">
                                         {post.title}
                                     </h2>
                                     <p className="font-serif text-lg md:text-xl text-white/70 leading-relaxed">
                                         {post.excerpt}
                                     </p>
-                                </div>
-                            </Link>
-                        );
-                    }
-
-                    if (post.type === 'EDITORIAL') {
-                        return (
-                            <Link href={`/bitacora/${post.slug}`} key={post.id} className="md:col-span-1 border border-white/10 p-8 flex flex-col justify-between hover:bg-white/5 transition-colors cursor-pointer group h-full">
-                                <div>
-                                    <h2 className="font-serif text-2xl md:text-3xl font-bold mb-4 group-hover:underline decoration-brand decoration-2 underline-offset-4">
-                                        {post.title}
-                                    </h2>
-                                    <p className="font-sans text-sm text-white/60 leading-relaxed">
-                                        {post.excerpt}
-                                    </p>
-                                </div>
-                                <div className="mt-8 pt-4 border-t border-white/10 flex justify-between items-center">
-                                    <span className="font-mono text-xs text-brand">EDITORIAL</span>
-                                    <span className="font-mono text-xs text-white/40">{post.createdAt.toLocaleDateString()}</span>
                                 </div>
                             </Link>
                         );
@@ -98,6 +77,7 @@ export default async function Bitacora() {
                             <p className="font-serif text-xs text-white/60 mt-2 line-clamp-2">
                                 {post.excerpt}
                             </p>
+                            <span className="font-mono text-xs text-brand mt-2 block">{post.date}</span>
                         </Link>
                     );
                 })}

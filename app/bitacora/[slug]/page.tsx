@@ -1,29 +1,24 @@
-import prisma from '@/lib/prisma';
+import { getPostBySlug, getPosts } from '@/lib/wordpress';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+
+export const revalidate = 60;
 
 interface PageProps {
     params: { slug: string };
 }
 
 export async function generateStaticParams() {
-    const posts = await prisma.post.findMany({
-        where: { published: true },
-        select: { slug: true },
-    });
+    const posts = await getPosts();
     return posts.map((post) => ({ slug: post.slug }));
 }
 
-export const dynamic = 'force-dynamic';
-
 export default async function PostPage({ params }: PageProps) {
-    const post = await prisma.post.findUnique({
-        where: { slug: params.slug },
-    });
+    const post = await getPostBySlug(params.slug);
 
-    if (!post || !post.published) {
+    if (!post) {
         notFound();
     }
 
@@ -57,14 +52,9 @@ export default async function PostPage({ params }: PageProps) {
             {/* Article Content */}
             <article className="px-6 lg:px-12 max-w-4xl mx-auto">
                 <header className="mb-12">
-                    <div className="flex items-center gap-4 mb-6">
-                        <span className="font-mono text-xs text-brand tracking-widest uppercase">
-                            {post.type}
-                        </span>
-                        <span className="font-mono text-xs text-white/40">
-                            {post.createdAt.toLocaleDateString()}
-                        </span>
-                    </div>
+                    <span className="font-mono text-xs text-white/40 block mb-6">
+                        {post.date}
+                    </span>
                     <h1 className="font-sans text-4xl md:text-6xl font-black uppercase leading-tight mb-6">
                         {post.title}
                     </h1>
@@ -83,7 +73,8 @@ export default async function PostPage({ params }: PageProps) {
             prose-blockquote:border-l-brand prose-blockquote:bg-white/5 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:italic
             prose-strong:text-white prose-strong:font-bold
             prose-ul:list-disc prose-ol:list-decimal
-            prose-li:text-white/80"
+            prose-li:text-white/80
+            prose-img:rounded-none prose-img:my-8"
                     dangerouslySetInnerHTML={{ __html: post.content }}
                 />
             </article>

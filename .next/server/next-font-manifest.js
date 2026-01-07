@@ -1,1 +1,1 @@
-self.__NEXT_FONT_MANIFEST='{"pages":{},"app":{"/home/ricardo/editorial_fusiones_1/app/layout":["static/media/e4af272ccee01ff0-s.p.woff2","static/media/82050c55ac1c8c11-s.p.woff2","static/media/1f3fe8c6df3d47c1-s.p.woff2"]},"appUsingSizeAdjust":true,"pagesUsingSizeAdjust":false}';
+self.__NEXT_FONT_MANIFEST='{"pages":{},"app":{"/home/ricardo/editorial_fusiones_1/app/layout":["static/media/e4af272ccee01ff0-s.p.woff2","static/media/1f3fe8c6df3d47c1-s.p.woff2","static/media/82050c55ac1c8c11-s.p.woff2"]},"appUsingSizeAdjust":true,"pagesUsingSizeAdjust":false}';

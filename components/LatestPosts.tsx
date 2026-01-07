@@ -1,14 +1,10 @@
-import prisma from '@/lib/prisma';
 import Link from 'next/link';
+import { getLatestPosts } from '@/lib/wordpress';
 import { ArrowRight } from 'lucide-react';
 import { PageRoute } from '@/lib/types';
 
 export default async function LatestPosts() {
-    const posts = await prisma.post.findMany({
-        where: { published: true },
-        orderBy: { createdAt: 'desc' },
-        take: 3,
-    });
+    const posts = await getLatestPosts(3);
 
     if (posts.length === 0) return null;
 
@@ -29,9 +25,6 @@ export default async function LatestPosts() {
                         className="group"
                     >
                         <article className="border border-white/10 p-6 h-full flex flex-col hover:bg-white/5 transition-colors">
-                            <span className="font-mono text-[10px] text-brand tracking-widest uppercase mb-4">
-                                {post.type}
-                            </span>
                             <h3 className="font-sans text-xl font-bold uppercase leading-tight mb-3 group-hover:text-brand transition-colors">
                                 {post.title}
                             </h3>
@@ -39,7 +32,7 @@ export default async function LatestPosts() {
                                 {post.excerpt}
                             </p>
                             <div className="mt-4 pt-4 border-t border-white/10">
-                                <span className="font-mono text-xs text-white/40">{post.createdAt.toLocaleDateString()}</span>
+                                <span className="font-mono text-xs text-white/40">{post.date}</span>
                             </div>
                         </article>
                     </Link>
